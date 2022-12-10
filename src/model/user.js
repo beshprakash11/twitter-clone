@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
         trim: true,
         unique: true
     },
-    username:{
+    email:{
         type: String,
         required: true,
         trim: true,
@@ -28,10 +28,10 @@ const userSchema = new mongoose.Schema({
     password:{
         type: String,
         required: true,
-        minLength: 4,
+        minlength: 7,
         trim: true,
-        validate(value){
-            if(value.toLowerCase('password')){
+        validate(value) {
+            if (value.toLowerCase().includes('password')) {
                 throw new Error('Password cannot contain "password"')
             }
         }
@@ -55,7 +55,7 @@ const userSchema = new mongoose.Schema({
         type: Array,
         default: []
     },
-    followerings: {
+    followings: {
         type: Array,
         default: []
     }
