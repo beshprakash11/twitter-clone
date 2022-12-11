@@ -76,6 +76,18 @@ userSchema.virtual('tweets',{
     foreignField: 'user' //forigen field
 })
 
+userSchema.virtual('notificationsSent', {
+    ref: 'Notification',
+    localField: '_id',
+    foreignField: 'notSenderId'
+})
+
+userSchema.virtual('notificationsReceived', {
+    ref: 'Notification',
+    localField: '_id',
+    foreignField: 'notReceiverId'
+})
+
 //Hide password and remove password access by client
 userSchema.methods.toJSON = function(){
     const user = this
